@@ -1,0 +1,57 @@
+{% extends "admin/admin.html" %}
+
+{% block content %}
+
+<!--内容-->
+<!--内容-->
+<section class="content-header">
+    <h1>微电影管理系统</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 电影管理</a></li>
+        <li class="active">扫描电影</li>
+    </ol>
+</section>
+<section class="content" id="showcontent">
+
+</section>
+<!--内容-->
+{% endblock %}
+
+{% block js %}
+
+<script>
+    $(document).ready(function () {
+        $('#input_release_time').datepicker({
+            autoclose: true,
+            format: 'yyyy-mm-dd',
+            language: 'zh-CN',
+        });
+    });
+
+</script>
+
+
+<script>
+    $(function () {
+        $("#g-3").addClass("active")
+        $("#g-3-3").addClass("active")
+
+        $("#input_logo").change(function (e) {
+
+            for (var i = 0; i < e.target.files.length; i++) {
+                var file = e.target.files.item(i);
+                var freader = new FileReader();
+                freader.readAsDataURL(file);
+                freader.onload = function (e) {
+                    var src = e.target.result;
+                    $("#imgId").attr("src", src);
+
+                }
+            }
+        });
+
+
+    })
+
+</script>
+{% endblock %}
